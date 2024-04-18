@@ -1,10 +1,17 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import React from "react";
+import { useToast } from "@chakra-ui/react";
 import MyGroup from "@/components/MyGroup";
 import walletConnectFcn from "@/components/hedera/walletConnect";
 import contractDeployFcn from "@/components/hedera/contractDeploy";
 import contractExecuteFcn from "@/components/hedera/contractExecute";
+import AddCandidateModal from "@/components/comps/addcandidate";
+import AddVoterModal from "@/components/comps/addvoter";
+import VoteModal from "@/components/comps/vote";
+import VCModal from "@/components/comps/getvotecount";
+import ElectionStatusModal from "@/components/comps/getecstatus";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +32,8 @@ export default function Home() {
   const [contractLinkSt, setContractLinkSt] = useState();
   const [executeTextSt, setExecuteTextSt] = useState();
   const [executeLinkSt, setExecuteLinkSt] = useState();
+
+  const toast = useToast();
 
   async function connectWallet() {
     if (account !== undefined) {
@@ -60,6 +69,14 @@ export default function Home() {
         setContractTextSt(`Contract ${cAddress} deployed ✅`);
 
         setContractLinkSt(`https://hashscan.io/${network}/address/${cAddress}`);
+        toast({
+          title: "Contract Deployed",
+          description: "Voting contract is deployed Successfully",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top-left",
+        });
       }
     }
   }
@@ -68,6 +85,18 @@ export default function Home() {
     if (contractAddress === undefined) {
       setExecuteTextSt("🛑 Deploy The contract first! 🛑");
     } else {
+      toast({
+        title: "Election Activate",
+        description: "Please Sign the transaction",
+        status: "info",
+        duration: 3000,
+        isClosable: true,
+        position: "top-left",
+        style: {
+          background: "black",
+          color: "white",
+        },
+      });
       const [txHash, finalStatus] = await contractExecuteFcn(
         walletData,
         contractAddress
@@ -79,6 +108,14 @@ export default function Home() {
           `Election Status is: ${finalStatus} | Transaction hash: ${txHash} ✅`
         );
         setExecuteLinkSt(`https://hashscan.io/${network}/tx/${txHash}`);
+        toast({
+          title: "Election Activate",
+          description: "Election is Activated now Successfully",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+          position: "top-left",
+        });
       }
     }
   }
@@ -197,6 +234,23 @@ export default function Home() {
           </p>
         </a>
       </div>
+      <AddCandidateModal
+        contractAddress={contractAddress}
+        walletData={walletData}
+      ></AddCandidateModal>
+      <AddVoterModal
+        contractAddress={contractAddress}
+        walletData={walletData}
+      ></AddVoterModal>
+      <VoteModal
+        contractAddress={contractAddress}
+        walletData={walletData}
+      ></VoteModal>
+      <VCModal
+        contractAddress={contractAddress}
+        walletData={walletData}
+      ></VCModal>
+      <ElectionStatusModal></ElectionStatusModal>
     </main>
   );
 }
