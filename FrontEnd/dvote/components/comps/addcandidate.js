@@ -1,6 +1,7 @@
 import { useState } from "react";
 import abi from "@/contracts/abi";
 import { ethers } from "ethers";
+
 import {
   Modal,
   ModalOverlay,
@@ -36,6 +37,27 @@ const AddCandidateModal = ({ contractAddress, walletData }) => {
         { gasLimit: gasLimit }
       );
 
+      // Construct an object containing the candidate's details
+      const candidateDetails = {
+        address: candidateAddress,
+        name: candidateName,
+        party: candidateParty,
+      };
+
+      // Make a POST request to the API route to add the candidate
+      const response = await fetch("/api/addCandidate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(candidateDetails),
+      });
+
+      if (response.ok) {
+        console.log("Candidate added successfully");
+      } else {
+        console.error("Failed to add candidate:", response.statusText);
+      }
       // Handle success
       console.log("Candidate added successfully");
     } catch (error) {
@@ -48,15 +70,9 @@ const AddCandidateModal = ({ contractAddress, walletData }) => {
 
   return (
     <>
-      <Button
-        bgColor="transparent"
-        border="1px"
-        borderColor="#ADFF00"
-        color="#808080"
-        onClick={onOpen}
-      >
+      <button className="zinc-button font-mono" onClick={onOpen}>
         Add Candidate
-      </Button>
+      </button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -86,7 +102,7 @@ const AddCandidateModal = ({ contractAddress, walletData }) => {
             </FormControl>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" onClick={handleAddCandidate}>
+            <Button colorScheme="gray" onClick={handleAddCandidate}>
               Add Candidate
             </Button>
           </ModalFooter>

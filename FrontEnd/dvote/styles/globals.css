@@ -32,25 +32,55 @@ body {
   }
 }
 
-.cta-button {
-  display: inline-block;
-  border: 2px solid #8259ef;
-  height: 50px;
-  width: 100%;
-  max-width: 280px;
-  background-color: #8259ef;
-  color: white;
-  border-radius: 5px;
-  box-sizing: border-box;
-  padding: 0 20px;
-  font-weight: 700;
-  text-decoration: none;
-  font-size: 18px;
-  letter-spacing: 0;
-  line-height: 1.2;
-  text-align: center;
-  cursor: pointer;
-  outline: none;
-  font-family: sans-serif;
-  transition: all 0.1 ease-out;
+.zinc-button {
+  justify-content: center;
+  width: 200px;
+
+  border-bottom: 1px solid #ccc;
+  background-image: linear-gradient(to bottom, #d4d4d4, #e1e1e1);
+  padding-bottom: 0.75rem;
+  padding-top: 1rem;
+  backdrop-filter: blur(20px);
+}
+
+.zinc-button.dark {
+  border-color: #333;
+  background-image: inherit;
+}
+
+@media (min-width: 1024px) {
+  .zinc-button {
+    position: static;
+    width: 200px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  .zinc-button.dark {
+    background-color: rgba(49, 49, 49, 0.3);
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+}
+
+.modal-container {
+  flex: 1;
+  width: 50%; /* Each modal container takes up half of the row width */
+}
+
+@media (min-width: 768px) {
+  .modal-container {
+    width: 25%; /* Each modal container takes up one-fourth of the row width on larger screens */
+  }
 }

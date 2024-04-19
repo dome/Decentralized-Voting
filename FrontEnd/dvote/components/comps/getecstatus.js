@@ -2,7 +2,6 @@ import abi from "@/contracts/abi";
 import React from "react";
 import { useToast } from "@chakra-ui/react";
 import { ethers } from "ethers";
-import { Button } from "@chakra-ui/react";
 
 const ElectionStatusModal = ({ contractAddress, walletData }) => {
   const toast = useToast();
@@ -45,16 +44,9 @@ const ElectionStatusModal = ({ contractAddress, walletData }) => {
 
   return (
     <>
-      <Button
-        className="font-mono mt-2 "
-        bgColor="zinc"
-        border="1px"
-        borderColor="zinc"
-        color="black"
-        onClick={handleElectionS}
-      >
+      <button className="font-mono zinc-button " onClick={handleElectionS}>
         Election Status
-      </Button>
+      </button>
     </>
   );
 };

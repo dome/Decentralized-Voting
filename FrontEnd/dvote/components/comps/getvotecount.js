@@ -64,15 +64,9 @@ const VCModal = ({ contractAddress, walletData }) => {
 
   return (
     <>
-      <Button
-        bgColor="transparent"
-        border="1px"
-        borderColor="#ADFF00"
-        color="#808080"
-        onClick={onOpen}
-      >
+      <button className="zinc-button font-mono" onClick={onOpen}>
         Get VoteCount
-      </Button>
+      </button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -88,7 +82,7 @@ const VCModal = ({ contractAddress, walletData }) => {
             </FormControl>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="pink" onClick={handleGetVCount}>
+            <Button colorScheme="gray" onClick={handleGetVCount}>
               Get VoteCount
             </Button>
           </ModalFooter>

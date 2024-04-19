@@ -42,15 +42,9 @@ const VoteModal = ({ contractAddress, walletData }) => {
 
   return (
     <>
-      <Button
-        bgColor="transparent"
-        border="1px"
-        borderColor="#ADFF00"
-        color="#808080"
-        onClick={onOpen}
-      >
+      <button className="zinc-button font-mono" onClick={onOpen}>
         Vote
-      </Button>
+      </button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -66,7 +60,7 @@ const VoteModal = ({ contractAddress, walletData }) => {
             </FormControl>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" onClick={handleVoteCandidate}>
+            <Button colorScheme="gray" onClick={handleVoteCandidate}>
               Cast Vote
             </Button>
           </ModalFooter>
