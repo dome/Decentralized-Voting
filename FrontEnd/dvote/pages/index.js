@@ -162,12 +162,12 @@ export default function Home() {
       <main
         className={`flex min-h-full flex-col items-center justify-between p-24 ${inter.className}`}
       >
-        <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+        <div className="z-10 w-full items-center justify-between font-mono text-sm flex">
           <p className="zinc-button font-mono text-center">
             Welcome to D.vote;
           </p>
-          <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-            <a className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0">
+          <div>
+            <a>
               <button
                 className="zinc-button font-mono"
                 onClick={connectWallet}
@@ -194,7 +194,7 @@ export default function Home() {
           <MyGroup text={connectTextSt} link={connectLinkSt} />
           <MyGroup text={contractTextSt} link={contractLinkSt} />
           <MyGroup text={executeTextSt} link={executeLinkSt} />
-          <div className="grid grid-cols-3 justify-items-center mb-2">
+          <div className="grid grid-cols-3 gap-8  mb-2">
             <button className="font-mono zinc-button " onClick={contractDeploy}>
               {contractAddress ? "Election Deployed" : "Deploy Election"}
             </button>
@@ -273,7 +273,7 @@ export default function Home() {
             </p>
           </a>
         </div>
-        <div className="w-full grid grid-cols-2 sm:grid-cols-2 gap-4 mt-10 mx-auto justify-center   ">
+        <div className="mb-32 mt-10 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-2 gap-4 lg:text-left">
           <div className="row">
             <div className="">
               <AddCandidateModal

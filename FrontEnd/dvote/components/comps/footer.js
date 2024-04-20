@@ -23,7 +23,7 @@ function Footer() {
             @nagrarohit
           </a>
         </p>
-        <span className="inline-flex  sm:mt-0 mt-0 justify-center sm:justify-start">
+        <span className="inline-flex  sm:mt-0 mt-2 justify-center sm:justify-start">
           <a
             className="ml-3 text-black cursor-pointer"
             href="https://www.linkedin.com/in/nagrarohit/"
@@ -33,10 +33,10 @@ function Footer() {
             <svg
               fill="currentColor"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="0"
-              className="w-5 h-5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="0"
+              className="w-5 h-20"
               viewBox="0 0 24 24"
             >
               <path

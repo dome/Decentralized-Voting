@@ -90,14 +90,14 @@ function WinnerComponent({ contractAddress, walletData }) {
         onClick={handleClick}
         disabled={fetchingData}
       >
-        {fetchingData ? "Fetching Candidates..." : "Get Candidate Data"}
+        {fetchingData ? "Fetching..." : "Get Data"}
       </button>
       <button
         className="zinc-button font-mono ml-4"
         onClick={handleGetVoteCounts}
         disabled={candidateData.length === 0}
       >
-        Get Voting Results
+        Get Results
       </button>
     </div>
   );
