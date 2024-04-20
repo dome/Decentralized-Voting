@@ -1,0 +1,14 @@
+{
+  "name": "dvoteBot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "nagrarohit",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.5"
+  }
+}

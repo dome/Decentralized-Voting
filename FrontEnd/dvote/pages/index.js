@@ -1,4 +1,5 @@
 import Image from "next/image";
+const axios = require("axios");
 import { Inter } from "next/font/google";
 import { useState } from "react";
 import React from "react";
@@ -74,6 +75,19 @@ export default function Home() {
         setContractTextSt(`Contract ${cAddress} deployed ✅`);
 
         setContractLinkSt(`https://hashscan.io/${network}/address/${cAddress}`);
+
+        // Send message to Discord webhook
+        const message = `Contract ${cAddress} deployed successfully on ${network} network. and here is the link https://hashscan.io/${network}/address/${cAddress}`;
+
+        try {
+          await axios.post(
+            "https://discord.com/api/webhooks/1231166325997699112/Ple8q_XayqkOb2YZZHxs6DHZ5rfymw6QdZ6Y34D5PZ0qUhI-IagbWUsKjJX4QFcCSO5y",
+            { content: message }
+          );
+          console.log("Message sent to Discord via webhook");
+        } catch (error) {
+          console.error("Error sending message to Discord via webhook:", error);
+        }
         toast({
           title: "Contract Deployed",
           description: "Voting contract is deployed Successfully",
